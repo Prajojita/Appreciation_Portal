@@ -7,7 +7,6 @@ import {
   ListItemButton,
   Typography,
   Paper,
-  createTheme,
   styled,
 } from "@mui/material";
 import { setSelectedNavIndex } from "../../redux/reducers/appReducer";
@@ -31,17 +30,6 @@ function SideNavBar() {
   );
 }
 
-let demoTheme = createTheme({
-  components: {
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          color: "#000",
-        },
-      },
-    },
-  },
-});
 
 export default SideNavBar;
 const NavListItemButton = styled(ListItemButton)(({ theme }) => ({
@@ -80,7 +68,7 @@ const SelectedListItem = () => {
       component="nav"
       sx={{
         "&& .Mui-selected, && .Mui-selected:hover": {
-          borderLeft: "5px solid #04B7CF",
+          borderLeft: "5px solid #119AFF",
           bgcolor: "#ffffff30",
           paddingLeft: "3px",
           "&, & .MuiListItemIcon-root": {

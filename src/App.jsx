@@ -1,5 +1,5 @@
 import AppreciatePage from "./Pages/AppreciatePage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import CustomTheme from "./Theme/CustomTheme";
 import AppBarComponent from "./Components/AppBarComponent/AppBarComponent";
@@ -23,6 +23,7 @@ function App() {
               <Route exact path="/appreciate" component={AppreciatePage} />
               <Route exact path="/received" component={AppreciationReceived} />
               <Route exact path="/sent" component={AppreciationSent} />
+              <Redirect exact from="/" to="/appreciate" />
             </Switch>
           </div>
         </div>

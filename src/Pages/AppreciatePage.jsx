@@ -16,7 +16,7 @@ import { toPng } from "html-to-image";
 
 const StyledCertificate = styled(Paper)(({ theme }) => ({
   boxShadow: "0 0 5px #000",
-  borderRadius: "10px",
+  borderRadius: "0px",
   overflow: "hidden",
   position: "relative",
 }));
@@ -72,37 +72,60 @@ const AppreciatePage = () => {
   const [messageFont, setMessageFont] = useState(data[0].messageFontSize);
 
   return (
-    <Box>
+    <Box sx={{ height: "calc(100vh - 52px)" }}>
       <Grid
         sx={{
           flexGrow: 1,
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "100%",
         }}
         container
         gap={8}
       >
-        <Grid item xs={3}>
+        <Grid
+          item
+          xs={3}
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "center",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Paper
+            className="wbScroll"
+            elevation={6}
             sx={{
-              height: "90vh",
+              height: "95%",
+              overflow: "auto",
             }}
           >
-            <Grid container gap={6} sx={{ padding: "1em" }}>
+            <Grid container gap={1} sx={{ padding: "1em 2em" }}>
               <Grid item xs={12}>
-                <FormControl>
-                  <label>Recepient Name: </label>
-                  <TextField onChange={(e) => setName(e.target.value)} />
-                  <Typography>Font Size</Typography>
+                <Typography sx={{ fontSize: "24px" }}>Add Details</Typography>
+                <FormControl sx={{ width: "100%" }}>
+                  <Typography style={{ fontSize: "18px" }}>Name</Typography>
+                  <TextField
+                    variant="outlined"
+                    sx={{ marginBottom: "0.4em" }}
+                    InputProps={{ style: { height: "40px" } }}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <Typography sx={{ fontSize: "11px" }}>Font Size</Typography>
                   <Slider
+                    size="small"
                     key={"font"}
                     value={Number(nameFont)}
                     onChange={(e) => setNameFont(e.target.value)}
                     valueLabelDisplay="auto"
                   />
-                  <Typography>Left Position</Typography>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    Left Position
+                  </Typography>
                   <Slider
+                    size="small"
                     key={"left"}
                     min={0}
                     max={500}
@@ -110,8 +133,11 @@ const AppreciatePage = () => {
                     onChange={(e) => setNameLeftPostion(e.target.value)}
                     valueLabelDisplay="auto"
                   />
-                  <Typography>Top Position</Typography>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    Top Position
+                  </Typography>
                   <Slider
+                    size="small"
                     key={"top"}
                     min={0}
                     max={500}
@@ -122,18 +148,30 @@ const AppreciatePage = () => {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl>
-                  <label>Message: </label>
-                  <TextField onChange={(e) => setMessage(e.target.value)} />
-                  <Typography>Font Size</Typography>
+                <FormControl sx={{ width: "100%" }}>
+                  <Typography style={{ fontSize: "18px" }}>Message</Typography>
+                  <TextField
+                    multiline
+                    rows={3}
+                    type={"text"}
+                    sx={{ marginBottom: "0.4em" }}
+                    variant="outlined"
+                    InputProps={{ style: { height: "12vh" } }}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                  <Typography sx={{ fontSize: "11px" }}>Font Size</Typography>
                   <Slider
+                    size="small"
                     key={"font"}
                     value={Number(messageFont)}
                     onChange={(e) => setMessageFont(e.target.value)}
                     valueLabelDisplay="auto"
                   />
-                  <Typography>Left Position</Typography>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    Left Position
+                  </Typography>
                   <Slider
+                    size="small"
                     key={"left"}
                     min={0}
                     max={500}
@@ -141,8 +179,11 @@ const AppreciatePage = () => {
                     onChange={(e) => setMessageLeftPostion(e.target.value)}
                     valueLabelDisplay="auto"
                   />
-                  <Typography>Top Position</Typography>
+                  <Typography sx={{ fontSize: "11px" }}>
+                    Top Position
+                  </Typography>
                   <Slider
+                    size="small"
                     key={"top"}
                     min={0}
                     max={500}
@@ -164,7 +205,16 @@ const AppreciatePage = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item>
+        <Grid
+          item
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <StyledCertificate ref={ref}>
             <PositionedName
               style={{
