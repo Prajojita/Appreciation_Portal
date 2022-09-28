@@ -10,6 +10,16 @@ import { CardHeader } from "@mui/material";
 import TextField from "@mui/material/TextField/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
+import { createRef, useCallback, useState } from "react";
+
+
+const handleCilck= () =>{
+  <img
+              height={"500px"}
+              src="../Assests/Slide1.jpg"
+              alt="Certificate"
+            />
+}
 
 export default function AppreciationReceived() {
   return (
@@ -241,7 +251,7 @@ export default function AppreciationReceived() {
               </div>
             </div>
           </Card>
-          <Card
+          <Card onClick={handleCilck}
             elevation={8}
             sx={{
               width: "300px",
@@ -303,7 +313,15 @@ export default function AppreciationReceived() {
           </Card>
         </Card>
       </Grid>
-      
+          <Grid item md={7} style={{ padding: "16px" }}>
+    <img
+              height={"500px"}
+              src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=916&q=80"
+              alt="Certificate"
+            />
     </Grid>
+    </Grid> 
+
+   
   );
 }
