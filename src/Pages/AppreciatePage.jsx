@@ -13,6 +13,9 @@ import React, { createRef, useCallback, useState } from "react";
 import "./AppreciatePage.css";
 import data from "../certificateData";
 import { toPng } from "html-to-image";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 const StyledCertificate = styled(Paper)(({ theme }) => ({
   boxShadow: "0 0 5px #000",
@@ -71,6 +74,12 @@ const AppreciatePage = () => {
   );
   const [messageFont, setMessageFont] = useState(data[0].messageFontSize);
 
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
+
   return (
     <Box sx={{ height: "calc(100vh - 52px)" }}>
       <Grid
@@ -102,9 +111,35 @@ const AppreciatePage = () => {
               overflow: "auto",
             }}
           >
-            <Grid container gap={1} sx={{ padding: "1em 2em" }}>
+            <Grid container gap={3} sx={{ padding: "2em 2em" }}>
               <Grid item xs={12}>
-                <Typography sx={{ fontSize: "24px" }}>Add Details</Typography>
+                <Typography sx={{ fontSize: "1rem", fontWeight: "500" }}>
+                  Value Card Category
+                </Typography>
+                <FormControl sx={{ width: "100%" }} size="small">
+                  <Select
+                    labelId="demo-select-small"
+                    id="demo-select-small"
+                    value={age}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Customer Centricity</MenuItem>
+                    <MenuItem value={20}>Excellence</MenuItem>
+                    <MenuItem value={30}>Integrity</MenuItem>
+                    <MenuItem value={40}>Joy</MenuItem>
+                    <MenuItem value={50}>Ownership</MenuItem>
+                    <MenuItem value={60}>Partnership</MenuItem>
+                    <MenuItem value={70}>People First</MenuItem>
+                  </Select>
+                </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                <Typography sx={{ fontSize: "1rem", fontWeight: "500" }}>
+                  Add Details
+                </Typography>
                 <FormControl sx={{ width: "100%" }}>
                   <Typography style={{ fontSize: "18px" }}>Name</Typography>
                   <TextField
